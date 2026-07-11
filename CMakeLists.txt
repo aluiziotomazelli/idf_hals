@@ -4,12 +4,14 @@ if(IDF_TARGET STREQUAL "linux")
             "src/hal_gpio.cpp"
             "src/hal_timer.cpp"
             "src/hal_sys_rom.cpp"
+            "src/hal_nvs.cpp"
         INCLUDE_DIRS
             "include"
             "include/interfaces"
         REQUIRES
             esp_timer
             driver
+            nvs_flash
     )
 else()
     idf_component_register(
@@ -17,6 +19,7 @@ else()
             "src/hal_gpio.cpp"
             "src/hal_timer.cpp"
             "src/hal_sys_rom.cpp"
+            "src/hal_nvs.cpp"
             "src/hal_adc_calibration.cpp"
             "src/hal_adc_oneshot.cpp"
         INCLUDE_DIRS
@@ -26,5 +29,6 @@ else()
             esp_timer
             driver
             esp_adc
+            nvs_flash
     )
 endif()
