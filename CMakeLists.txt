@@ -23,6 +23,7 @@ else()
             "src/hal_sleep.cpp"
             "src/hal_adc_calibration.cpp"
             "src/hal_adc_oneshot.cpp"
+            "src/hal_freertos.cpp"
         INCLUDE_DIRS
             "include"
             "include/interfaces"
