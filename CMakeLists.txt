@@ -20,6 +20,7 @@ else()
             "src/hal_timer.cpp"
             "src/hal_sys_rom.cpp"
             "src/hal_nvs.cpp"
+            "src/hal_sleep.cpp"
             "src/hal_adc_calibration.cpp"
             "src/hal_adc_oneshot.cpp"
         INCLUDE_DIRS
