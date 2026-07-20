@@ -4,14 +4,15 @@
 #include "esp_err.h"
 #include "esp_sleep.h"
 
-#ifdef LINUX_TARGET
-typedef enum {
-    ESP_GPIO_WAKEUP_GPIO_LOW = 0,
-    ESP_GPIO_WAKEUP_GPIO_HIGH = 1
-} esp_deepsleep_gpio_wake_up_mode_t;
-#endif
-
 namespace idf_hals {
+
+/**
+ * @brief Unified GPIO Wakeup mode
+ */
+enum class GpioWakeupMode {
+    LOW_LEVEL = 0,
+    HIGH_LEVEL = 1
+};
 
 /**
  * @interface ISleepHAL
@@ -28,8 +29,8 @@ public:
     /** @copydoc esp_sleep_enable_timer_wakeup() */
     virtual esp_err_t enable_timer_wakeup(uint64_t time_in_us) = 0;
 
-    /** @copydoc esp_deep_sleep_enable_gpio_wakeup() */
-    virtual esp_err_t deep_sleep_enable_gpio_wakeup(uint64_t gpio_pin_mask, esp_deepsleep_gpio_wake_up_mode_t mode) = 0;
+    /** @brief Enable GPIO deep sleep wakeup (abstracts ext1/gpio_wakeup differences) */
+    virtual esp_err_t deep_sleep_enable_gpio_wakeup(uint64_t gpio_pin_mask, GpioWakeupMode mode) = 0;
 
     /** @copydoc esp_deep_sleep_start() */
     virtual void deep_sleep_start() = 0;
