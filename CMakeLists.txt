@@ -5,6 +5,7 @@ if(IDF_TARGET STREQUAL "linux")
             "src/hal_timer.cpp"
             "src/hal_sys_rom.cpp"
             "src/hal_nvs.cpp"
+            "src/hal_system.cpp"
         INCLUDE_DIRS
             "include"
             "include/interfaces"
@@ -24,6 +25,7 @@ else()
             "src/hal_adc_calibration.cpp"
             "src/hal_adc_oneshot.cpp"
             "src/hal_freertos.cpp"
+            "src/hal_system.cpp"
         INCLUDE_DIRS
             "include"
             "include/interfaces"
