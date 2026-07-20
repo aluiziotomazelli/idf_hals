@@ -19,7 +19,7 @@ public:
     esp_err_t enable_timer_wakeup(uint64_t time_in_us) override;
 
     /** @copydoc ISleepHAL::deep_sleep_enable_gpio_wakeup() */
-    esp_err_t deep_sleep_enable_gpio_wakeup(uint64_t gpio_pin_mask, esp_deepsleep_gpio_wake_up_mode_t mode) override;
+    esp_err_t deep_sleep_enable_gpio_wakeup(uint64_t gpio_pin_mask, GpioWakeupMode mode) override;
 
     /** @copydoc ISleepHAL::deep_sleep_start() */
     void deep_sleep_start() override;
