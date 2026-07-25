@@ -7,6 +7,7 @@ if(IDF_TARGET STREQUAL "linux")
             "src/hal_nvs.cpp"
             "src/hal_system.cpp"
             "src/hal_pcnt.cpp"
+            "src/hal_system_time.cpp"
         INCLUDE_DIRS
             "include"
             "include/interfaces"
@@ -14,6 +15,7 @@ if(IDF_TARGET STREQUAL "linux")
             esp_timer
             driver
             nvs_flash
+            esp_netif
     )
 else()
     idf_component_register(
@@ -29,6 +31,8 @@ else()
             "src/hal_system.cpp"
             "src/hal_touch.cpp"
             "src/hal_pcnt.cpp"
+            "src/hal_system_time.cpp"
+            "src/hal_sntp.cpp"
         INCLUDE_DIRS
             "include"
             "include/interfaces"
@@ -39,5 +43,6 @@ else()
             nvs_flash
             esp_driver_touch_sens
             esp_driver_pcnt
+            esp_netif
     )
 endif()
