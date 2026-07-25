@@ -66,9 +66,9 @@ esp_err_t HalPcnt::unit_clear_count(pcnt_unit_handle_t unit) {
 #endif
 }
 
-esp_err_t HalPcnt::unit_get_count(pcnt_unit_handle_t unit, int *value) {
+esp_err_t HalPcnt::unit_get_count(pcnt_unit_handle_t unit, int32_t *value) {
 #if __has_include("driver/pulse_cnt.h")
-    return pcnt_unit_get_count(unit, value);
+    return pcnt_unit_get_count(unit, reinterpret_cast<int*>(value));
 #else
     return ESP_ERR_NOT_SUPPORTED;
 #endif

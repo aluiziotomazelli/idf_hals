@@ -15,7 +15,7 @@ public:
     MOCK_METHOD(esp_err_t, unit_start, (pcnt_unit_handle_t), (override));
     MOCK_METHOD(esp_err_t, unit_stop, (pcnt_unit_handle_t), (override));
     MOCK_METHOD(esp_err_t, unit_clear_count, (pcnt_unit_handle_t), (override));
-    MOCK_METHOD(esp_err_t, unit_get_count, (pcnt_unit_handle_t, int*), (override));
+    MOCK_METHOD(esp_err_t, unit_get_count, (pcnt_unit_handle_t, int32_t*), (override));
     MOCK_METHOD(esp_err_t, new_channel, (pcnt_unit_handle_t, const pcnt_chan_config_t*, pcnt_channel_handle_t*), (override));
     MOCK_METHOD(esp_err_t, del_channel, (pcnt_channel_handle_t), (override));
     MOCK_METHOD(esp_err_t, channel_set_edge_action, (pcnt_channel_handle_t, pcnt_channel_edge_action_t, pcnt_channel_edge_action_t), (override));

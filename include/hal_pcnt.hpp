@@ -34,7 +34,7 @@ public:
     esp_err_t unit_clear_count(pcnt_unit_handle_t unit) override;
 
     /** @copydoc IPcntHAL::unit_get_count */
-    esp_err_t unit_get_count(pcnt_unit_handle_t unit, int *value) override;
+    esp_err_t unit_get_count(pcnt_unit_handle_t unit, int32_t *value) override;
 
     /** @copydoc IPcntHAL::new_channel */
     esp_err_t new_channel(pcnt_unit_handle_t unit, const pcnt_chan_config_t *config, pcnt_channel_handle_t *ret_chan) override;
