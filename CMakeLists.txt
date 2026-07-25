@@ -26,6 +26,7 @@ else()
             "src/hal_adc_oneshot.cpp"
             "src/hal_freertos.cpp"
             "src/hal_system.cpp"
+            "src/hal_touch.cpp"
         INCLUDE_DIRS
             "include"
             "include/interfaces"
@@ -34,5 +35,6 @@ else()
             driver
             esp_adc
             nvs_flash
+            esp_driver_touch_sens
     )
 endif()
