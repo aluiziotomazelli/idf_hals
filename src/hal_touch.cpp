@@ -58,6 +58,30 @@ esp_err_t HalTouch::disable(touch_sensor_handle_t sens_handle) {
 #endif
 }
 
+esp_err_t HalTouch::start_continuous_scanning(touch_sensor_handle_t sens_handle) {
+#if __has_include("driver/touch_sens.h")
+    return touch_sensor_start_continuous_scanning(sens_handle);
+#else
+    return ESP_ERR_NOT_SUPPORTED;
+#endif
+}
+
+esp_err_t HalTouch::stop_continuous_scanning(touch_sensor_handle_t sens_handle) {
+#if __has_include("driver/touch_sens.h")
+    return touch_sensor_stop_continuous_scanning(sens_handle);
+#else
+    return ESP_ERR_NOT_SUPPORTED;
+#endif
+}
+
+esp_err_t HalTouch::trigger_oneshot_scanning(touch_sensor_handle_t sens_handle, uint32_t timeout_ms) {
+#if __has_include("driver/touch_sens.h")
+    return touch_sensor_trigger_oneshot_scanning(sens_handle, timeout_ms);
+#else
+    return ESP_ERR_NOT_SUPPORTED;
+#endif
+}
+
 esp_err_t HalTouch::read_channel_data(touch_channel_handle_t chan_handle, touch_chan_data_type_t type, uint32_t *data) {
 #if __has_include("driver/touch_sens.h")
     return touch_channel_read_data(chan_handle, type, data);

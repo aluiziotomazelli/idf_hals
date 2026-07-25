@@ -20,6 +20,10 @@ public:
     esp_err_t enable(touch_sensor_handle_t sens_handle) override;
     esp_err_t disable(touch_sensor_handle_t sens_handle) override;
     
+    esp_err_t start_continuous_scanning(touch_sensor_handle_t sens_handle) override;
+    esp_err_t stop_continuous_scanning(touch_sensor_handle_t sens_handle) override;
+    esp_err_t trigger_oneshot_scanning(touch_sensor_handle_t sens_handle, uint32_t timeout_ms) override;
+    
     esp_err_t read_channel_data(touch_channel_handle_t chan_handle, touch_chan_data_type_t type, uint32_t *data) override;
 };
 

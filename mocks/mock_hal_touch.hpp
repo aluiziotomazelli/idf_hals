@@ -14,6 +14,9 @@ public:
     MOCK_METHOD(esp_err_t, del_channel, (touch_channel_handle_t), (override));
     MOCK_METHOD(esp_err_t, enable, (touch_sensor_handle_t), (override));
     MOCK_METHOD(esp_err_t, disable, (touch_sensor_handle_t), (override));
+    MOCK_METHOD(esp_err_t, start_continuous_scanning, (touch_sensor_handle_t), (override));
+    MOCK_METHOD(esp_err_t, stop_continuous_scanning, (touch_sensor_handle_t), (override));
+    MOCK_METHOD(esp_err_t, trigger_oneshot_scanning, (touch_sensor_handle_t, uint32_t), (override));
     MOCK_METHOD(esp_err_t, read_channel_data, (touch_channel_handle_t, touch_chan_data_type_t, uint32_t*), (override));
 };
 
