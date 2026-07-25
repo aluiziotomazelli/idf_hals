@@ -6,6 +6,7 @@ if(IDF_TARGET STREQUAL "linux")
             "src/hal_sys_rom.cpp"
             "src/hal_nvs.cpp"
             "src/hal_system.cpp"
+            "src/hal_pcnt.cpp"
         INCLUDE_DIRS
             "include"
             "include/interfaces"
@@ -27,6 +28,7 @@ else()
             "src/hal_freertos.cpp"
             "src/hal_system.cpp"
             "src/hal_touch.cpp"
+            "src/hal_pcnt.cpp"
         INCLUDE_DIRS
             "include"
             "include/interfaces"
@@ -36,5 +38,6 @@ else()
             esp_adc
             nvs_flash
             esp_driver_touch_sens
+            esp_driver_pcnt
     )
 endif()
