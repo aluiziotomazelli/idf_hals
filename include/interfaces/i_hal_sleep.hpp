@@ -34,6 +34,9 @@ public:
 
     /** @copydoc esp_deep_sleep_start() */
     virtual void deep_sleep_start() = 0;
+
+    /** @copydoc esp_sleep_get_wakeup_cause() */
+    virtual esp_sleep_wakeup_cause_t get_wakeup_cause() = 0;
 };
 
 } // namespace idf_hals

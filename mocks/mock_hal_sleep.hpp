@@ -13,6 +13,7 @@ public:
     MOCK_METHOD(esp_err_t, enable_timer_wakeup, (uint64_t time_in_us), (override));
     MOCK_METHOD(esp_err_t, deep_sleep_enable_gpio_wakeup, (uint64_t gpio_pin_mask, GpioWakeupMode mode), (override));
     MOCK_METHOD(void, deep_sleep_start, (), (override));
+    MOCK_METHOD(esp_sleep_wakeup_cause_t, get_wakeup_cause, (), (override));
 };
 
 } // namespace idf_hals

@@ -23,6 +23,9 @@ public:
 
     /** @copydoc ISleepHAL::deep_sleep_start() */
     void deep_sleep_start() override;
+
+    /** @copydoc ISleepHAL::get_wakeup_cause() */
+    esp_sleep_wakeup_cause_t get_wakeup_cause() override;
 };
 
 } // namespace idf_hals

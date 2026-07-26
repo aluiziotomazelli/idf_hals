@@ -36,4 +36,9 @@ void SleepHAL::deep_sleep_start()
     esp_deep_sleep_start();
 }
 
+esp_sleep_wakeup_cause_t SleepHAL::get_wakeup_cause()
+{
+    return esp_sleep_get_wakeup_cause();
+}
+
 } // namespace idf_hals
