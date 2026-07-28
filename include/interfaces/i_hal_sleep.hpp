@@ -9,7 +9,8 @@ namespace idf_hals {
 /**
  * @brief Unified GPIO Wakeup mode
  */
-enum class GpioWakeupMode {
+enum class GpioWakeupMode
+{
     LOW_LEVEL = 0,
     HIGH_LEVEL = 1
 };

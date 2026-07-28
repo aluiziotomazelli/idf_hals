@@ -28,4 +28,9 @@ uint32_t SystemHAL::get_minimum_free_heap_size()
     return esp_get_minimum_free_heap_size();
 }
 
+const esp_app_desc_t* SystemHAL::get_app_description()
+{
+    return esp_app_get_description();
+}
+
 } // namespace idf_hals

@@ -2,6 +2,7 @@
 #pragma once
 
 #include "esp_system.h"
+#include "esp_app_desc.h"
 #include <cstdint>
 
 namespace idf_hals {
@@ -29,6 +30,9 @@ public:
 
     /** @copydoc esp_get_minimum_free_heap_size() */
     virtual uint32_t get_minimum_free_heap_size() = 0;
+
+    /** @copydoc  esp_app_desc_t *esp_app_get_description(void)*/
+    virtual const esp_app_desc_t* get_app_description() = 0;
 };
 
 } // namespace idf_hals

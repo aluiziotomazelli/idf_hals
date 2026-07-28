@@ -17,6 +17,7 @@ public:
     uint32_t get_free_heap_size() override;
     uint32_t get_free_internal_heap_size() override;
     uint32_t get_minimum_free_heap_size() override;
+    const esp_app_desc_t* get_app_description() override;
 };
 
 } // namespace idf_hals

@@ -44,5 +44,6 @@ else()
             esp_driver_touch_sens
             esp_driver_pcnt
             esp_netif
+            esp_app_format
     )
 endif()
