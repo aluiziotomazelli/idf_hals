@@ -16,6 +16,7 @@ if(IDF_TARGET STREQUAL "linux")
             driver
             nvs_flash
             esp_netif
+            esp_app_format
     )
 else()
     idf_component_register(
