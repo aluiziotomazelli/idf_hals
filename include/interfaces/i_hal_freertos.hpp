@@ -50,6 +50,9 @@ public:
     virtual BaseType_t
     task_notify_wait(uint32_t bits_clear_entry, uint32_t bits_clear_exit, uint32_t* value, TickType_t xTicksToWait) = 0;
 
+    /** @copydoc uxTaskGetStackHighWaterMark() */
+    virtual UBaseType_t task_get_stack_high_water_mark(TaskHandle_t xTask = nullptr) = 0;
+
     // Queue
     /** @copydoc xQueueCreate() */
     virtual QueueHandle_t queue_create(UBaseType_t length, UBaseType_t item_size) = 0;

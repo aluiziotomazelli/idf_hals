@@ -54,6 +54,11 @@ BaseType_t HalFreertos::task_notify_wait(
     return xTaskNotifyWait(bits_clear_entry, bits_clear_exit, value, xTicksToWait);
 }
 
+UBaseType_t HalFreertos::task_get_stack_high_water_mark(TaskHandle_t xTask)
+{
+    return uxTaskGetStackHighWaterMark(xTask);
+}
+
 QueueHandle_t HalFreertos::queue_create(UBaseType_t length, UBaseType_t item_size)
 {
     return xQueueCreate(length, item_size);
