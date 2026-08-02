@@ -8,6 +8,7 @@ if(IDF_TARGET STREQUAL "linux")
             "src/hal_system.cpp"
             "src/hal_pcnt.cpp"
             "src/hal_system_time.cpp"
+            "src/hal_i2c.cpp"
         INCLUDE_DIRS
             "include"
             "include/interfaces"
@@ -34,6 +35,7 @@ else()
             "src/hal_pcnt.cpp"
             "src/hal_system_time.cpp"
             "src/hal_sntp.cpp"
+            "src/hal_i2c.cpp"
         INCLUDE_DIRS
             "include"
             "include/interfaces"
