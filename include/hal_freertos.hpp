@@ -32,7 +32,14 @@ public:
     BaseType_t task_notify(TaskHandle_t task_handle, uint32_t bits, eNotifyAction action) override;
 
     BaseType_t
-    task_notify_wait(uint32_t bits_clear_entry, uint32_t bits_clear_exit, uint32_t* value, TickType_t xTicksToWait) override;
+    task_notify_wait(uint32_t bits_clear_entry, uint32_t bits_clear_exit, uint32_t* value, TickType_t xTicksToWait)
+        override;
+
+    /** @copydoc xTaskNotifyGive() */
+    BaseType_t task_notify_give(TaskHandle_t xTaskToNotify) override;
+
+    /** @copydoc ulTaskNotifyTake() */
+    uint32_t task_notify_take(BaseType_t xClearCountOnExit, TickType_t xTicksToWait) override;
 
     UBaseType_t task_get_stack_high_water_mark(TaskHandle_t xTask = nullptr) override;
 
@@ -76,9 +83,11 @@ public:
 
     BaseType_t semaphore_give(SemaphoreHandle_t semaphore_handle) override;
 
-    BaseType_t semaphore_give_from_isr(SemaphoreHandle_t semaphore_handle, BaseType_t* pxHigherPriorityTaskWoken) override;
+    BaseType_t
+    semaphore_give_from_isr(SemaphoreHandle_t semaphore_handle, BaseType_t* pxHigherPriorityTaskWoken) override;
 
-    BaseType_t semaphore_take_from_isr(SemaphoreHandle_t semaphore_handle, BaseType_t* pxHigherPriorityTaskWoken) override;
+    BaseType_t
+    semaphore_take_from_isr(SemaphoreHandle_t semaphore_handle, BaseType_t* pxHigherPriorityTaskWoken) override;
 
     void semaphore_delete(SemaphoreHandle_t semaphore_handle) override;
 };

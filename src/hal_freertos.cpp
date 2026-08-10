@@ -54,6 +54,16 @@ BaseType_t HalFreertos::task_notify_wait(
     return xTaskNotifyWait(bits_clear_entry, bits_clear_exit, value, xTicksToWait);
 }
 
+BaseType_t HalFreertos::task_notify_give(TaskHandle_t xTaskToNotify)
+{
+    return xTaskNotifyGive(xTaskToNotify);
+}
+
+uint32_t HalFreertos::task_notify_take(BaseType_t xClearCountOnExit, TickType_t xTicksToWait)
+{
+    return ulTaskNotifyTake(xClearCountOnExit, xTicksToWait);
+}
+
 UBaseType_t HalFreertos::task_get_stack_high_water_mark(TaskHandle_t xTask)
 {
     return uxTaskGetStackHighWaterMark(xTask);
@@ -79,18 +89,14 @@ BaseType_t HalFreertos::queue_receive(QueueHandle_t queue_handle, void* data, Ti
     return xQueueReceive(queue_handle, data, xTicksToWait);
 }
 
-BaseType_t HalFreertos::queue_send_from_isr(
-    QueueHandle_t queue_handle,
-    const void* data,
-    BaseType_t* pxHigherPriorityTaskWoken)
+BaseType_t
+HalFreertos::queue_send_from_isr(QueueHandle_t queue_handle, const void* data, BaseType_t* pxHigherPriorityTaskWoken)
 {
     return xQueueSendFromISR(queue_handle, data, pxHigherPriorityTaskWoken);
 }
 
-BaseType_t HalFreertos::queue_receive_from_isr(
-    QueueHandle_t queue_handle,
-    void* data,
-    BaseType_t* pxHigherPriorityTaskWoken)
+BaseType_t
+HalFreertos::queue_receive_from_isr(QueueHandle_t queue_handle, void* data, BaseType_t* pxHigherPriorityTaskWoken)
 {
     return xQueueReceiveFromISR(queue_handle, data, pxHigherPriorityTaskWoken);
 }
@@ -145,16 +151,14 @@ BaseType_t HalFreertos::semaphore_give(SemaphoreHandle_t semaphore_handle)
     return xSemaphoreGive(semaphore_handle);
 }
 
-BaseType_t HalFreertos::semaphore_give_from_isr(
-    SemaphoreHandle_t semaphore_handle,
-    BaseType_t* pxHigherPriorityTaskWoken)
+BaseType_t
+HalFreertos::semaphore_give_from_isr(SemaphoreHandle_t semaphore_handle, BaseType_t* pxHigherPriorityTaskWoken)
 {
     return xSemaphoreGiveFromISR(semaphore_handle, pxHigherPriorityTaskWoken);
 }
 
-BaseType_t HalFreertos::semaphore_take_from_isr(
-    SemaphoreHandle_t semaphore_handle,
-    BaseType_t* pxHigherPriorityTaskWoken)
+BaseType_t
+HalFreertos::semaphore_take_from_isr(SemaphoreHandle_t semaphore_handle, BaseType_t* pxHigherPriorityTaskWoken)
 {
     return xSemaphoreTakeFromISR(semaphore_handle, pxHigherPriorityTaskWoken);
 }

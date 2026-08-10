@@ -50,6 +50,12 @@ public:
     virtual BaseType_t
     task_notify_wait(uint32_t bits_clear_entry, uint32_t bits_clear_exit, uint32_t* value, TickType_t xTicksToWait) = 0;
 
+    /** @copydoc xTaskNotifyGive() */
+    virtual BaseType_t task_notify_give(TaskHandle_t xTaskToNotify) = 0;
+
+    /** @copydoc ulTaskNotifyTake() */
+    virtual uint32_t task_notify_take(BaseType_t xClearCountOnExit, TickType_t xTicksToWait) = 0;
+
     /** @copydoc uxTaskGetStackHighWaterMark() */
     virtual UBaseType_t task_get_stack_high_water_mark(TaskHandle_t xTask = nullptr) = 0;
 
@@ -109,10 +115,12 @@ public:
     virtual BaseType_t semaphore_give(SemaphoreHandle_t semaphore_handle) = 0;
 
     /** @copydoc xSemaphoreGiveFromISR() */
-    virtual BaseType_t semaphore_give_from_isr(SemaphoreHandle_t semaphore_handle, BaseType_t* pxHigherPriorityTaskWoken) = 0;
+    virtual BaseType_t
+    semaphore_give_from_isr(SemaphoreHandle_t semaphore_handle, BaseType_t* pxHigherPriorityTaskWoken) = 0;
 
     /** @copydoc xSemaphoreTakeFromISR() */
-    virtual BaseType_t semaphore_take_from_isr(SemaphoreHandle_t semaphore_handle, BaseType_t* pxHigherPriorityTaskWoken) = 0;
+    virtual BaseType_t
+    semaphore_take_from_isr(SemaphoreHandle_t semaphore_handle, BaseType_t* pxHigherPriorityTaskWoken) = 0;
 
     /** @copydoc vSemaphoreDelete() */
     virtual void semaphore_delete(SemaphoreHandle_t semaphore_handle) = 0;
