@@ -46,6 +46,18 @@ public:
 
     /** @copydoc gpio_deep_sleep_hold_en() */
     virtual void deep_sleep_hold_en() = 0;
+
+    /** @copydoc gpio_install_isr_service() */
+    virtual esp_err_t install_isr_service(int intr_alloc_flags) = 0;
+
+    /** @copydoc gpio_uninstall_isr_service() */
+    virtual void uninstall_isr_service(void) = 0;
+
+    /** @copydoc gpio_isr_handler_add() */
+    virtual esp_err_t isr_handler_add(gpio_num_t gpio_num, gpio_isr_t isr_handler, void* args) = 0;
+
+    /** @copydoc gpio_isr_handler_remove() */
+    virtual esp_err_t isr_handler_remove(gpio_num_t gpio_num) = 0;
 };
 
 } // namespace idf_hals

@@ -38,6 +38,18 @@ public:
 
     /** @copydoc IGpioHAL::deep_sleep_hold_en() */
     void deep_sleep_hold_en() override;
+
+    /** @copydoc IGpioHAL::install_isr_service() */
+    esp_err_t install_isr_service(int intr_alloc_flags) override;
+
+    /** @copydoc IGpioHAL::uninstall_isr_service() */
+    virtual void uninstall_isr_service(void) override;
+
+    /** @copydoc IGpioHAL::isr_handler_add() */
+    esp_err_t isr_handler_add(gpio_num_t gpio_num, gpio_isr_t isr_handler, void* args) override;
+
+    /** @copydoc IGpioHAL::isr_handler_remove() */
+    esp_err_t isr_handler_remove(gpio_num_t gpio_num) override;
 };
 
 } // namespace idf_hals

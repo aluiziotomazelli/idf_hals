@@ -52,4 +52,24 @@ void GpioHAL::deep_sleep_hold_en()
 #endif
 }
 
+esp_err_t GpioHAL::install_isr_service(int intr_alloc_flags)
+{
+    return gpio_install_isr_service(intr_alloc_flags);
+}
+
+void GpioHAL::uninstall_isr_service(void)
+{
+    gpio_uninstall_isr_service();
+}
+
+esp_err_t GpioHAL::isr_handler_add(gpio_num_t gpio_num, gpio_isr_t isr_handler, void* args)
+{
+    return gpio_isr_handler_add(gpio_num, isr_handler, args);
+}
+
+esp_err_t GpioHAL::isr_handler_remove(gpio_num_t gpio_num)
+{
+    return gpio_isr_handler_remove(gpio_num);
+}
+
 } // namespace idf_hals
