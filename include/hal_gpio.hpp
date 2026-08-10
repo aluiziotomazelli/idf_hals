@@ -29,6 +29,15 @@ public:
 
     /** @copydoc IGpioHAL::set_drive_capability() */
     esp_err_t set_drive_capability(gpio_num_t gpio_num, gpio_drive_cap_t strength) override;
+
+    /** @copydoc IGpioHAL::hold_en() */
+    esp_err_t hold_en(gpio_num_t gpio_num) override;
+
+    /** @copydoc IGpioHAL::hold_dis() */
+    esp_err_t hold_dis(gpio_num_t gpio_num) override;
+
+    /** @copydoc IGpioHAL::deep_sleep_hold_en() */
+    void deep_sleep_hold_en() override;
 };
 
 } // namespace idf_hals

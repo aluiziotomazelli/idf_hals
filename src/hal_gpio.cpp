@@ -35,4 +35,21 @@ esp_err_t GpioHAL::set_drive_capability(gpio_num_t gpio_num, gpio_drive_cap_t st
     return gpio_set_drive_capability(gpio_num, strength);
 }
 
+esp_err_t GpioHAL::hold_en(gpio_num_t gpio_num)
+{
+    return gpio_hold_en(gpio_num);
+}
+
+esp_err_t GpioHAL::hold_dis(gpio_num_t gpio_num)
+{
+    return gpio_hold_dis(gpio_num);
+}
+
+void GpioHAL::deep_sleep_hold_en()
+{
+#if SOC_GPIO_SUPPORT_HOLD_IO_IN_DSLP && !SOC_GPIO_SUPPORT_HOLD_SINGLE_IO_IN_DSLP
+    gpio_deep_sleep_hold_en();
+#endif
+}
+
 } // namespace idf_hals

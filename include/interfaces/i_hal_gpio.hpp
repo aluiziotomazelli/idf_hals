@@ -37,6 +37,15 @@ public:
 
     /** @copydoc gpio_set_drive_capability() */
     virtual esp_err_t set_drive_capability(gpio_num_t gpio_num, gpio_drive_cap_t strength) = 0;
+
+    /** @copydoc gpio_hold_en() */
+    virtual esp_err_t hold_en(gpio_num_t gpio_num) = 0;
+
+    /** @copydoc gpio_hold_dis() */
+    virtual esp_err_t hold_dis(gpio_num_t gpio_num) = 0;
+
+    /** @copydoc gpio_deep_sleep_hold_en() */
+    virtual void deep_sleep_hold_en() = 0;
 };
 
 } // namespace idf_hals
