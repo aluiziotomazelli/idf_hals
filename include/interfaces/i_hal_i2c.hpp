@@ -3,12 +3,20 @@
 
 #include "esp_err.h"
 
-#if __has_include("driver/i2c_master.h")
+#if !defined(CONFIG_IDF_TARGET_LINUX) && __has_include("driver/i2c_master.h")
 #include "driver/i2c_master.h"
 #else
 typedef void* i2c_master_bus_handle_t;
 typedef void* i2c_master_dev_handle_t;
 typedef int i2c_port_num_t;
+
+typedef enum {
+    I2C_NUM_0 = 0,
+} i2c_port_t;
+
+typedef enum {
+    I2C_CLK_SRC_DEFAULT = 0,
+} i2c_clock_source_t;
 
 typedef enum {
     I2C_ADDR_BIT_LEN_7 = 0,
@@ -19,7 +27,7 @@ typedef struct {
     i2c_port_num_t i2c_port;
     int sda_io_num;
     int scl_io_num;
-    int clk_source;
+    i2c_clock_source_t clk_source;
     uint8_t glitch_ignore_cnt;
     struct {
         uint32_t enable_internal_pullup: 1;
