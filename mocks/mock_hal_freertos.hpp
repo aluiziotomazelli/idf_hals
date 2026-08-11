@@ -16,6 +16,8 @@ public:
     MOCK_METHOD(void, task_suspend, (TaskHandle_t task_handle), (override));
     MOCK_METHOD(BaseType_t, task_notify, (TaskHandle_t task_handle, uint32_t bits, eNotifyAction action), (override));
     MOCK_METHOD(BaseType_t, task_notify_wait, (uint32_t bits_clear_entry, uint32_t bits_clear_exit, uint32_t* value, TickType_t xTicksToWait), (override));
+    MOCK_METHOD(BaseType_t, task_notify_give, (TaskHandle_t xTaskToNotify), (override));
+    MOCK_METHOD(uint32_t, task_notify_take, (BaseType_t xClearCountOnExit, TickType_t xTicksToWait), (override));
     MOCK_METHOD(UBaseType_t, task_get_stack_high_water_mark, (TaskHandle_t xTask), (override));
 
     MOCK_METHOD(QueueHandle_t, queue_create, (UBaseType_t length, UBaseType_t item_size), (override));
