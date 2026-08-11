@@ -15,6 +15,13 @@ public:
     MOCK_METHOD(int, get_level, (gpio_num_t pin), (override));
     MOCK_METHOD(esp_err_t, set_direction, (gpio_num_t pin, gpio_mode_t mode), (override));
     MOCK_METHOD(esp_err_t, set_drive_capability, (gpio_num_t gpio_num, gpio_drive_cap_t strength), (override));
+    MOCK_METHOD(esp_err_t, hold_en, (gpio_num_t gpio_num), (override));
+    MOCK_METHOD(esp_err_t, hold_dis, (gpio_num_t gpio_num), (override));
+    MOCK_METHOD(void, deep_sleep_hold_en, (), (override));
+    MOCK_METHOD(esp_err_t, install_isr_service, (int intr_alloc_flags), (override));
+    MOCK_METHOD(void, uninstall_isr_service, (), (override));
+    MOCK_METHOD(esp_err_t, isr_handler_add, (gpio_num_t gpio_num, gpio_isr_t isr_handler, void* args), (override));
+    MOCK_METHOD(esp_err_t, isr_handler_remove, (gpio_num_t gpio_num), (override));
 };
 
 } // namespace idf_hals
