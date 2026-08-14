@@ -90,6 +90,20 @@ public:
     semaphore_take_from_isr(SemaphoreHandle_t semaphore_handle, BaseType_t* pxHigherPriorityTaskWoken) override;
 
     void semaphore_delete(SemaphoreHandle_t semaphore_handle) override;
+
+    // Event Group
+    EventGroupHandle_t event_group_create() override;
+
+    EventBits_t event_group_set_bits(EventGroupHandle_t event_group, const EventBits_t bits_to_set) override;
+
+    EventBits_t event_group_wait_bits(
+        EventGroupHandle_t event_group,
+        const EventBits_t bits_to_wait_for,
+        const BaseType_t clear_on_exit,
+        const BaseType_t wait_for_all_bits,
+        TickType_t ticks_to_wait) override;
+
+    void event_group_delete(EventGroupHandle_t event_group) override;
 };
 
 } // namespace idf_hals

@@ -2,6 +2,7 @@
 #pragma once
 
 #include "freertos/FreeRTOS.h"
+#include "freertos/event_groups.h"
 #include "freertos/queue.h"
 #include "freertos/semphr.h"
 #include "freertos/task.h"
@@ -124,5 +125,23 @@ public:
 
     /** @copydoc vSemaphoreDelete() */
     virtual void semaphore_delete(SemaphoreHandle_t semaphore_handle) = 0;
+
+    // Event Group
+    /** @copydoc xEventGroupCreate() */
+    virtual EventGroupHandle_t event_group_create() = 0;
+
+    /** @copydoc xEventGroupSetBits() */
+    virtual EventBits_t event_group_set_bits(EventGroupHandle_t event_group, const EventBits_t bits_to_set) = 0;
+
+    /** @copydoc xEventGroupWaitBits() */
+    virtual EventBits_t event_group_wait_bits(
+        EventGroupHandle_t event_group,
+        const EventBits_t bits_to_wait_for,
+        const BaseType_t clear_on_exit,
+        const BaseType_t wait_for_all_bits,
+        TickType_t ticks_to_wait) = 0;
+
+    /** @copydoc vEventGroupDelete() */
+    virtual void event_group_delete(EventGroupHandle_t event_group) = 0;
 };
 } // namespace idf_hals

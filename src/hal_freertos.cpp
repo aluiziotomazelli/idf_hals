@@ -1,5 +1,6 @@
 // src/hal_freertos.cpp
 #include "freertos/FreeRTOS.h"
+#include "freertos/event_groups.h"
 #include "freertos/queue.h"
 #include "freertos/semphr.h"
 #include "freertos/task.h"
@@ -166,6 +167,31 @@ HalFreertos::semaphore_take_from_isr(SemaphoreHandle_t semaphore_handle, BaseTyp
 void HalFreertos::semaphore_delete(SemaphoreHandle_t semaphore_handle)
 {
     vSemaphoreDelete(semaphore_handle);
+}
+
+EventGroupHandle_t HalFreertos::event_group_create()
+{
+    return xEventGroupCreate();
+}
+
+EventBits_t HalFreertos::event_group_set_bits(EventGroupHandle_t event_group, const EventBits_t bits_to_set)
+{
+    return xEventGroupSetBits(event_group, bits_to_set);
+}
+
+EventBits_t HalFreertos::event_group_wait_bits(
+    EventGroupHandle_t event_group,
+    const EventBits_t bits_to_wait_for,
+    const BaseType_t clear_on_exit,
+    const BaseType_t wait_for_all_bits,
+    TickType_t ticks_to_wait)
+{
+    return xEventGroupWaitBits(event_group, bits_to_wait_for, clear_on_exit, wait_for_all_bits, ticks_to_wait);
+}
+
+void HalFreertos::event_group_delete(EventGroupHandle_t event_group)
+{
+    vEventGroupDelete(event_group);
 }
 
 } // namespace idf_hals
