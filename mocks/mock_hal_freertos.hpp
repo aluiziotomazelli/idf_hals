@@ -40,6 +40,11 @@ public:
     MOCK_METHOD(BaseType_t, semaphore_give_from_isr, (SemaphoreHandle_t semaphore_handle, BaseType_t* pxHigherPriorityTaskWoken), (override));
     MOCK_METHOD(BaseType_t, semaphore_take_from_isr, (SemaphoreHandle_t semaphore_handle, BaseType_t* pxHigherPriorityTaskWoken), (override));
     MOCK_METHOD(void, semaphore_delete, (SemaphoreHandle_t semaphore_handle), (override));
+
+    MOCK_METHOD(EventGroupHandle_t, event_group_create, (), (override));
+    MOCK_METHOD(EventBits_t, event_group_set_bits, (EventGroupHandle_t event_group, const EventBits_t bits_to_set), (override));
+    MOCK_METHOD(EventBits_t, event_group_wait_bits, (EventGroupHandle_t event_group, const EventBits_t bits_to_wait_for, const BaseType_t clear_on_exit, const BaseType_t wait_for_all_bits, TickType_t ticks_to_wait), (override));
+    MOCK_METHOD(void, event_group_delete, (EventGroupHandle_t event_group), (override));
 };
 
 } // namespace idf_hals
